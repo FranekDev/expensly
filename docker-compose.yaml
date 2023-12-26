@@ -1,0 +1,140 @@
+version: '3.8'
+
+networks:
+  expensly:
+
+services:
+  frankenphp:
+    build:
+      context: ./docker
+      dockerfile: frankenphp.dockerfile
+    restart: unless-stopped
+    container_name: frankenphp
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+        - ./:/var/www/html
+        - .env:/var/www/html/.env
+    working_dir: /var/www/html
+    depends_on:
+      - php
+      - pgsql
+    networks:
+        - expensly
+
+  php:
+    build:
+      context: ./docker
+      dockerfile: php.dockerfile
+      args:
+        - UID=${UID:-1000}
+        - GID=${GID:-1000}
+        - USER=${USER:-laravel}
+    container_name: php
+    ports:
+      - ":9000"
+    volumes:
+      - ./:/var/www/html
+      - .env:/var/www/html/.env
+    networks:
+      - expensly
+
+  pgsql:
+    image: postgres:16-alpine
+    container_name: pgsql
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./docker/pgsql:/var/lib/pgsql
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_DATABASE}
+      - POSTGRES_HOST=${DB_HOST}
+    networks:
+      - expensly
+
+  laravel-migrate-seed:
+    build:
+      context: ./docker
+      dockerfile: php.dockerfile
+      args:
+        - UID=${UID:-1000}
+        - GID=${GID:-1000}
+        - USER=${USER:-laravel}
+    container_name: laravel-migrate-seed
+    volumes:
+      - ./:/var/www/html
+      - .env:/var/www/html/.env
+    depends_on:
+      - pgsql
+    profiles: [ "migrate-seed" ]
+    working_dir: /var/www/html
+    entrypoint: [ "/bin/sh","-c" ]
+    command:
+      - |
+        php artisan migrate
+        php artisan db:seed
+    networks:
+      - expensly
+
+  composer:
+    build:
+      context: ./docker
+      dockerfile: composer.dockerfile
+      args:
+        - UID=${UID:-1000}
+        - GID=${GID:-1000}
+        - USER=${USER:-laravel}
+    container_name: composer
+    volumes:
+      - ./:/var/www/html
+      - .env:/var/www/html/.env
+    working_dir: /var/www/html
+    depends_on:
+      - php
+    user: ${USER:-laravel} #system user
+    profiles: [ "composer" ]
+    entrypoint: [ 'composer', '--ignore-platform-reqs' ]
+    networks:
+      - expensly
+
+  artisan:
+    build:
+      context: ./docker
+      dockerfile: php.dockerfile
+      args:
+        - UID=${UID:-1000}
+        - GID=${GID:-1000}
+        - USER=${USER:-laravel}
+    container_name: artisan
+    volumes:
+      - ./:/var/www/html
+      - .env:/var/www/html/.env
+    depends_on:
+      - pgsql
+    working_dir: /var/www/html
+    profiles: [ "artisan" ]
+    entrypoint: [ 'php', '/var/www/html/artisan' ]
+    networks:
+      - expensly
+
+  npm:
+    image: node:21-alpine
+    container_name: npm
+    volumes:
+      - ./:/var/www/html
+      - ./node_modules:/var/www/html/node_modules
+      - .env:/var/www/html/.env
+    ports:
+      - "5173:5173"
+    working_dir: /var/www/html
+    profiles: [ "npm" ]
+    entrypoint: [ 'npm' ]
+    networks:
+      - expensly
+
+volumes:
+    pgsql:
