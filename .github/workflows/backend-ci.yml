@@ -46,5 +46,15 @@ jobs:
       - name: Laravel Pint
         uses: aglipanci/laravel-pint-action@2.4.0
 
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.3
+          tools: composer:v2
+          coverage: xdebug
+
+      - name: Install dependencies
+        run: composer install --no-interaction --prefer-dist --optimize-autoloader
+
       - name: Lint
         run: ./vendor/bin/pint --test

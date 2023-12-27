@@ -58,8 +58,11 @@
         "test-unit": [
             "./vendor/bin/pest tests/Unit/"
         ],
-        "lint": [
+        "lint-test": [
             "./vendor/bin/pint --test"
+        ],
+        "lint-fix": [
+            "./vendor/bin/pint"
         ]
     },
     "extra": {
