@@ -46,3 +46,6 @@ jobs:
         uses: aglipanci/laravel-pint@v1
         with:
           preset: laravel
+
+      - name: Lint
+        run: ./vendor/bin/pint --test
