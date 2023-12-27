@@ -36,3 +36,15 @@ jobs:
 
       - name: Tests
         run: ./vendor/bin/pest tests/Unit/
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Laravel Pint
+        uses: aglipanci/laravel-pint-action@2.4.0
+
+      - name: Lint
+        run: ./vendor/bin/pint --test
