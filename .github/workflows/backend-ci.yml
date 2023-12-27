@@ -40,11 +40,18 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: "laravel-pint"
-        uses: aglipanci/laravel-pint-action@2.4.0
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
         with:
-          preset: laravel
+          php-version: 8.3
+          tools: composer:v2
+          coverage: xdebug
+
+      - name: Install dependencies
+        run: composer install --no-interaction --prefer-dist --optimize-autoloader
 
       - name: Lint
-        run: pint --test
+        run: ./vendor/bin/pint --test
