@@ -46,5 +46,3 @@ jobs:
         with:
           preset: laravel
 
-      - name: Lint
-        run: ./vendor/bin/pint --test
