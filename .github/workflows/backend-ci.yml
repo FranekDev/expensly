@@ -36,3 +36,13 @@ jobs:
 
       - name: Tests
         run: ./vendor/bin/pest tests/Unit/
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Laravel Pint
+        uses: aglipanci/laravel-pint@v1
+        with:
+          preset: laravel
