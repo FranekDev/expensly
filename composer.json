@@ -51,6 +51,18 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "test": [
+            "./vendor/bin/pest test/Unit"
+        ],
+        "phpstan": [
+            "./vendor/bin/phpstan analyse app/ test/Unit"
+        ],
+        "lint-test": [
+            "./vendor/bin/pint --test"
+        ],
+        "lint-fix": [
+            "./vendor/bin/pint"
         ]
     },
     "extra": {
