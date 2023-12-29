@@ -14,6 +14,14 @@ export default {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                thin: ['JetBrains Mono Thin', ...defaultTheme.fontFamily.mono],
+                extraLight: ['JetBrains Mono ExtraLight', ...defaultTheme.fontFamily.mono],
+                regular: ['JetBrains Mono Regular', ...defaultTheme.fontFamily.mono],
+                semiBold: ['JetBrains Mono SemiBold', ...defaultTheme.fontFamily.mono],
+                extraBold: ['JetBrains Mono ExtraBold', ...defaultTheme.fontFamily.mono],
+            },
+            colors: {
+                main: '#0E0E0E',
             },
         },
     },
