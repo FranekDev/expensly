@@ -133,6 +133,8 @@ services:
     working_dir: /var/www/html
     profiles: [ "npm" ]
     entrypoint: [ 'npm' ]
+    environment:
+      - NPM_CONFIG_UPDATE_NOTIFIER=false
     networks:
       - expensly
 
