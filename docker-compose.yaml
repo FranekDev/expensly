@@ -135,6 +135,7 @@ services:
     entrypoint: [ 'npm' ]
     environment:
       - NPM_CONFIG_UPDATE_NOTIFIER=false
+      - NODE_OPTIONS="--no-deprecation"
     networks:
       - expensly
 
