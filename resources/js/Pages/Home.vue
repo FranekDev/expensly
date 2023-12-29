@@ -10,7 +10,7 @@ import Text from "@/Components/Home/Text.vue";
         <div class="flex flex-col z-10 ml-24 gap-14">
             <div class="flex flex-col">
                 <Title title="EXPENSLY"/>
-                <Text>Magange Your expenses easily</Text>
+                <Text>Manage Your expenses easily</Text>
             </div>
 
             <Nav/>
