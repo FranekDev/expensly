@@ -1,6 +1,7 @@
 # Expensly
 
 [![Backend CI](https://github.com/FranekDev/expensly/actions/workflows/backend-ci.yml/badge.svg)](https://github.com/FranekDev/expensly/actions/workflows/backend-ci.yml/badge.svg)
+[![Frontend CI](https://github.com/FranekDev/expensly/actions/workflows/frontend-ci.yml/badge.svg)](https://github.com/FranekDev/expensly/actions/workflows/frontend-ci.yml/badge.svg)
 
 ## Expense tracker
 Expensly is an expense tracking application designed to simplify the process of managing your finances.
