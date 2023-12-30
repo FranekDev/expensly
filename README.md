@@ -1,4 +1,6 @@
-# Expensly
+<h1 class="title">
+EXPENSLY
+</h1>
 
 [![Backend CI](https://github.com/FranekDev/expensly/actions/workflows/backend-ci.yml/badge.svg)](https://github.com/FranekDev/expensly/actions/workflows/backend-ci.yml/badge.svg)
 [![Frontend CI](https://github.com/FranekDev/expensly/actions/workflows/frontend-ci.yml/badge.svg)](https://github.com/FranekDev/expensly/actions/workflows/frontend-ci.yml/badge.svg)
@@ -15,3 +17,14 @@ With its modern and minimalistic user interface, tracking and categorizing expen
 ![TailwindCSS](https://img.shields.io/badge/Tailwind%20CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
+
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100;0,200;0,400;0,600;1,600;1,800&display=swap');
+.title{
+    font-family: 'JetBrains Mono', monospace;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 3rem;
+ }
+</style>
