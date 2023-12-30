@@ -5,7 +5,8 @@ export default defineConfig({
     plugins: [vue()],
     test: {
         include: ['**/*.test.js', '/tests/JS/**/*.test.js'],
-        globals: true
+        globals: true,
+        watch: false,
     },
     resolve: {
         alias: {

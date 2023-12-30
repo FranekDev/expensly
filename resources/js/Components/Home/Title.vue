@@ -4,9 +4,11 @@ const props = defineProps({
         type: String,
         required: true
     }
-})
+});
 </script>
 
 <template>
-    <h1 class="text-white text-9xl font-extraBold italic">{{ props.title }}</h1>
+    <h1 class="text-white text-9xl font-extraBold italic">
+        {{ props.title }}
+    </h1>
 </template>
