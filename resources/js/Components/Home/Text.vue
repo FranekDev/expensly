@@ -4,7 +4,7 @@
 
 <template>
     <p class="text-green-300 text-4xl font-extraLight">
-        <slot/>
+        <slot />
     </p>
 </template>
 
