@@ -4,7 +4,7 @@
 
 <template>
     <main>
-        <div class='h-1 bg-stone-50'></div>
+        <div class="h-1 bg-stone-50" />
     </main>
 </template>
 

@@ -1,5 +1,5 @@
 <script setup>
-import IconLine from "@/Components/Menu/IconLine.vue";
+import IconLine from '@/Components/Menu/IconLine.vue';
 </script>
 
 <template>

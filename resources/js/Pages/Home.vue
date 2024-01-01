@@ -3,6 +3,7 @@ import BackgroundBlur from '@/Components/BackgroundBlur.vue';
 import Title from '@/Components/Home/Title.vue';
 import Nav from '@/Components/Home/Nav.vue';
 import Text from '@/Components/Home/Text.vue';
+import HamburgerMenu from '@/Components/Menu/HamburgerMenu.vue';
 </script>
 
 <template>
@@ -16,6 +17,7 @@ import Text from '@/Components/Home/Text.vue';
             <Nav />
         </div>
 
+        <HamburgerMenu />
         <BackgroundBlur />
     </main>
 </template>
