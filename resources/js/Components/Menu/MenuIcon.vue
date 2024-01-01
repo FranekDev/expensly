@@ -3,7 +3,7 @@ import IconLine from '@/Components/Menu/IconLine.vue';
 </script>
 
 <template>
-    <main class="flex flex-col gap-2">
+    <main class="flex flex-col gap-2 fixed bottom-6 left-6">
         <IconLine class="w-9" />
         <IconLine class="w-7" />
         <IconLine class="w-9" />

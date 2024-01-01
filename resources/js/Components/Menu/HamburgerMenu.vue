@@ -4,7 +4,7 @@ import MenuIcon from '@/Components/Menu/MenuIcon.vue';
 </script>
 
 <template>
-    <main class="absolute bottom-6 left-6">
+    <main class="absolute h-screen w-screen bg-stone-950 z-10">
         <MenuIcon />
     </main>
 </template>
