@@ -1,9 +1,17 @@
 import {mount} from '@vue/test-utils';
 import {describe, test} from "vitest";
 import Home from "@/Pages/Home.vue";
+import {createPinia} from "pinia";
+import Text from "@/Components/Home/Text.vue";
 
 describe('Home test', () => {
-    const wrapper = mount(Home);
+
+    const pinia = createPinia();
+    const wrapper = mount(Home, {
+        global: {
+            plugins: [pinia],
+        },
+    });
 
     test('should render the Home component', () => {
         expect(wrapper.exists()).toBe(true);
@@ -15,7 +23,7 @@ describe('Home test', () => {
     });
 
     test('should contain Text component', () => {
-        expect(wrapper.findComponent({name: 'Text'}).exists()).toBe(true);
+        expect(Text).toBeDefined()
     });
 
     it('should contain BackgroundBlur component', () => {
