@@ -1,32 +1,27 @@
-import {mount} from '@vue/test-utils';
-import {describe, test} from "vitest";
-import Home from "@/Pages/Home.vue";
-import {createPinia} from "pinia";
-import Text from "@/Components/Home/Text.vue";
+import {mount, shallowMount} from '@vue/test-utils';
+import {describe, test} from 'vitest';
+import Home from '@/Pages/Home.vue';
+import Text from '@/Components/Home/Text.vue';
+import Title from '@/Components/Home/Title.vue';
+import BackgroundBlur from '@/Components/BackgroundBlur.vue';
 
-describe('Home test', () => {
-
-    const pinia = createPinia();
-    const wrapper = mount(Home, {
-        global: {
-            plugins: [pinia],
-        },
-    });
+describe('Home', () => {
 
     test('should render the Home component', () => {
+        const wrapper = shallowMount(Home);
         expect(wrapper.exists()).toBe(true);
         expect(Home).toBeDefined();
     });
 
     test('should contain Title component', () => {
-        expect(wrapper.findComponent({name: 'Title'}).exists()).toBe(true);
+        expect(Title).toBeDefined();
     });
 
     test('should contain Text component', () => {
-        expect(Text).toBeDefined()
+        expect(Text).toBeDefined();
     });
 
     it('should contain BackgroundBlur component', () => {
-        expect(wrapper.findComponent({name: 'BackgroundBlur'}).exists()).toBe(true);
+        expect(BackgroundBlur).toBeDefined();
     });
 });

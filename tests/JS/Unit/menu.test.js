@@ -1,9 +1,9 @@
-import {describe, it} from "vitest";
+import {describe, it} from 'vitest';
 import Menu from '@/Components/Menu/Menu.vue';
 import {mount} from '@vue/test-utils';
-import {useMenuStore} from "@/stores/MenuStore.js";
-import {createPinia} from "pinia";
-import NavBar from "@/Components/Menu/Nav/NavBar.vue";
+import {useMenuStore} from '@/stores/MenuStore.js';
+import {createPinia} from 'pinia';
+import NavBar from '@/Components/Menu/Nav/NavBar.vue';
 
 describe('Menu', () => {
     const pinia = createPinia();

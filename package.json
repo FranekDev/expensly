@@ -7,8 +7,8 @@
         "test": "vitest --environment jsdom",
         "test:unit": "vitest --environment jsdom",
         "coverage": "vitest run --coverage",
-        "lint": "eslint --ext .js,.vue  resources/js",
-        "lint:fix": "eslint --fix --ext .js,.vue  resources/js"
+        "lint": "eslint --ext .js,.vue  resources/js tests/JS/",
+        "lint:fix": "eslint --fix --ext .js,.vue  resources/js tests/JS/"
     },
     "devDependencies": {
         "@babel/core": "^7.23.7",

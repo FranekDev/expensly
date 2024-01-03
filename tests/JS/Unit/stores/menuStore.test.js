@@ -1,6 +1,6 @@
-import {describe, it} from "vitest";
-import {useMenuStore} from "@/stores/MenuStore.js";
-import {setActivePinia, createPinia} from "pinia";
+import {describe, it} from 'vitest';
+import {useMenuStore} from '@/stores/MenuStore.js';
+import {setActivePinia, createPinia} from 'pinia';
 
 describe('MenuStore', () => {
 

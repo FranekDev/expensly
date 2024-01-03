@@ -1,5 +1,5 @@
-import {describe, test, expect} from "vitest";
-import Title from "@/Components/Home/Title.vue";
+import {describe, test, expect} from 'vitest';
+import Title from '@/Components/Home/Title.vue';
 import {mount} from '@vue/test-utils';
 
 describe('Title test', () => {
@@ -15,6 +15,6 @@ describe('Title test', () => {
     });
 
     test('should receive title prop', () => {
-        expect(wrapper.props('title')).toBe('Title')
+        expect(wrapper.props('title')).toBe('Title');
     });
 });
