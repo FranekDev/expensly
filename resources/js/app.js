@@ -11,14 +11,8 @@ import MainLayout from '@/Layouts/MainLayout.vue';
 const appName = import.meta.env.VITE_APP_NAME || 'Expensly';
 
 createInertiaApp({
-    title: (title) => `${title} - ${appName}`,
+    title: (title) => `${title}`,
     resolve: (name) => resolvePageComponent(`./Pages/${name}.vue`, import.meta.glob('./Pages/**/*.vue')),
-    // resolve: async name => {
-    //     const pages = import.meta.glob('./Pages/**/*.vue')
-    //     let page = await pages[`./Pages/${name}.vue`]()
-    //     page.default.layout = page.default.layout || MainLayout
-    //     return page
-    // },
     setup({ el, App, props, plugin }) {
         return createApp({ render: () => h(App, props) })
             .use(plugin)
