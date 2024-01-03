@@ -17,11 +17,6 @@ const props = defineProps({
     },
 });
 
-const isHovered = ref(false);
-
-const handleHover = (hover) => {
-    isHovered.value = hover;
-};
 </script>
 
 <template>
@@ -32,7 +27,7 @@ const handleHover = (hover) => {
         enter-to-class="opacity-1"
         leave-from-class="opacity-1"
         leave-active-class="ease-linear transition-all"
-        leave-to-class="opacity-0"
+        leave-to-class="opacity-0 -ml-28"
         :duration="150"
         appear
     >
@@ -40,15 +35,12 @@ const handleHover = (hover) => {
             <Link
                 :href="props.to"
                 class="text-stone-50 font-semiBold text-7xl"
-                :class="{ 'pointer-events-none': isHovered }"
             >
                 {{ props.name.toUpperCase() }}
             </Link>
             <div
-                class="group-hover:absolute group-hover:w-full group-hover:h-6 group-hover:bg-green-300 group-hover:bg-opacity-40 transition-all"
-                :class="{'absolute w-full h-6 bg-green-300 transition-all' : props.active}"
-                @mouseover="() => handleHover(true)"
-                @mouseleave="() => handleHover(false)"
+                class="group-hover:absolute group-hover:w-full group-hover:h-6 group-hover:bg-green-300 group-hover:bg-opacity-40 transition-all duration-150"
+                :class="props.active ? 'absolute w-full h-6 bg-green-300 transition-all' : 'w-0'"
             />
         </main>
     </Transition>

@@ -8,7 +8,6 @@ const page = usePage();
 const isActiveLink = computed(() => (name) => {
     return page.component === name;
 });
-console.log(page.component);
 </script>
 
 <template>
@@ -35,6 +34,7 @@ console.log(page.component);
     <MenuLink
         to="/logout"
         name="logout"
+        method="post"
     />
 </template>
 

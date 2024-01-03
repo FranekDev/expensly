@@ -27,9 +27,16 @@ const menu = useMenuStore();
             >
                 <NavBar />
 
-                <section class="w-fit flex flex-col ml-28 gap-10 mt-12">
-                    <Links />
-                </section>
+                <Transition
+                    leave-active-class="ease-linear transition-all"
+                    leave-to-class="-ml-28"
+                    :duration="150"
+                    appear
+                >
+                    <section class="w-fit flex flex-col ml-28 gap-10 mt-12">
+                        <Links />
+                    </section>
+                </Transition>
             </div>
         </Transition>
 
