@@ -1,5 +1,5 @@
 import {describe, test, expect} from 'vitest';
-import Title from '@/Components/Home/Title.vue';
+import Title from '@/Components/Title.vue';
 import {mount} from '@vue/test-utils';
 
 describe('Title test', () => {
