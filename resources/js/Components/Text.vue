@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <p class="text-green-300 text-4xl font-extraLight">
+    <p class="font-extraLight">
         <slot />
     </p>
 </template>
