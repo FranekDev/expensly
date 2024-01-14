@@ -1,6 +1,6 @@
 <script setup>
 import {Link} from '@inertiajs/vue3';
-import {ref} from 'vue';
+import {useMenuStore} from '@/stores/MenuStore.js';
 
 const props = defineProps({
     name: {
@@ -16,6 +16,8 @@ const props = defineProps({
         default: '',
     },
 });
+
+const menu = useMenuStore();
 
 </script>
 
@@ -35,6 +37,7 @@ const props = defineProps({
             <Link
                 :href="props.to"
                 class="text-stone-50 font-semiBold text-7xl"
+                @click="menu.toggleMenu()"
             >
                 {{ props.name.toUpperCase() }}
             </Link>
