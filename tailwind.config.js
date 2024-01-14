@@ -23,6 +23,9 @@ export default {
             colors: {
                 main: '#0E0E0E',
             },
+            backgroundImage: {
+                'hero-pattern': "url('/assets/green-blur.svg')",
+            },
         },
     },
 
