@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -19,7 +20,7 @@ class TransactionFactory extends Factory
     {
         return [
             'name' => fake()->word(),
-            'category_id' => fake()->randomDigit(),
+            'category_id' => Category::factory(),
             'amount' => fake()->randomFloat(2),
             'type' => fake()->randomElement(['expense', 'income']),
             'user_id' => User::factory(),
