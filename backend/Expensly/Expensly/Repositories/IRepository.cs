@@ -4,9 +4,9 @@ namespace Expensly.Repositories;
 
 public interface IRepository<T> where T : class
 {
-    Task<ActionResult<T>> Create(T entity);
-    Task<ActionResult<T?>> Find(int id);
-    Task<ActionResult<IEnumerable<T>>> Get();
-    Task<IActionResult> Delete(int id);
-    Task<IActionResult> Update(int id, T entity);
+    Task<T> Create(T entity);
+    Task<T?> Find(int id);
+    Task<IEnumerable<T>> Get();
+    Task Delete(int id);
+    Task Update(int id, T entity);
 }

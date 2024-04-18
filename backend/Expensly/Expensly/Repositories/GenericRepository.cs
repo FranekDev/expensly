@@ -9,42 +9,32 @@ public class GenericRepository<T>(ExpenslyContext context) : ControllerBase, IRe
     protected DbSet<T> dbSet = context.Set<T>();
     private ExpenslyContext _context => context;
 
-    public async Task<ActionResult<T>> Create(T entity)
+    public async Task<T> Create(T entity)
     {
         await dbSet.AddAsync(entity);
-        return Created();
+        return entity;
     }
 
-    public async Task<ActionResult<T?>> Find(int id)
+    public async Task<T?> Find(int id)
     {
         var item = await dbSet.FindAsync(id);
-
-        if (item is null)
-        {
-            return NotFound();
-        }
-        
-        return Ok(item);
+        return item;
     }
 
-    public async Task<ActionResult<IEnumerable<T>>> Get()
+    public async Task<IEnumerable<T>> Get()
     {
         var data = await dbSet.ToListAsync();
-        return Ok(data);
+        return data;
     }
 
-    public async Task<IActionResult> Delete(int id)
+    public async Task Delete(int id)
     {
         var item = await dbSet.FindAsync(id);
         
-        if (item is null)
+        if (item is not null)
         {
-            return NotFound();
+            Delete(item);
         }
-
-        Delete(item);
-        
-        return NoContent();
     }
 
     public void Delete(T entity)
@@ -57,10 +47,9 @@ public class GenericRepository<T>(ExpenslyContext context) : ControllerBase, IRe
         dbSet.Remove(entity);
     }
 
-    public async Task<IActionResult> Update(int id, T entity)
+    public async Task Update(int id, T entity)
     {
         dbSet.Attach(entity);
         _context.Entry(entity).State = EntityState.Modified;
-        return NoContent();
     }
 }
