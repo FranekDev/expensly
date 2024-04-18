@@ -486,3 +486,6 @@ $RECYCLE.BIN/
 backend/Expensly/.idea
 backend/Expensly/**/obj
 backend/Expensly/**/bin
+
+backend/Expensly/Expensly.Library/obj
+backend/Expensly/Expensly.Library/bin
