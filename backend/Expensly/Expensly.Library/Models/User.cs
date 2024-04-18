@@ -6,7 +6,7 @@ namespace Expensly.Library.Models;
 public sealed class User
 {
     [Key]
-    public required int Id { get; set; }
+    public int Id { get; set; }
     
     [Required]
     [StringLength(50)]
