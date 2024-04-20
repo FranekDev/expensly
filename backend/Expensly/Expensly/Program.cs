@@ -1,5 +1,6 @@
 using Expensly.Data;
 using Expensly.Repositories;
+using Expensly.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,9 +8,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<ExpenslyContext>();
-builder.Services.AddTransient<ExpenslyContext>();
-builder.Services.AddSingleton<UnitOfWork>();
+builder.Services.AddData();
+builder.Services.AddRepositories();
+builder.Services.AddServices();
 
 var app = builder.Build();
 
