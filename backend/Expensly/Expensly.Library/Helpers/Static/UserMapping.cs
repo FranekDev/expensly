@@ -18,4 +18,17 @@ public static class UserMapping
         
         return dto;
     }
+
+    public static User MapToDomain(this UserDto user)
+    {
+        var domain = new User()
+        {
+            UserName = user.UserName,
+            FirstName = user.FirstName,
+            LastName = user.LastName,
+            Email = user.Email
+        };
+        
+        return domain;
+    }
 }
