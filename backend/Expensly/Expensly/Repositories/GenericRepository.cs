@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Expensly.Repositories;
 
-public class GenericRepository<T>(ExpenslyContext context) : ControllerBase, IRepository<T> where T : class
+public class GenericRepository<T>(ExpenslyContext context) : IGenericRepository<T> where T : class
 {
     protected DbSet<T> dbSet = context.Set<T>();
     private ExpenslyContext _context => context;
@@ -33,23 +33,17 @@ public class GenericRepository<T>(ExpenslyContext context) : ControllerBase, IRe
         
         if (item is not null)
         {
-            Delete(item);
+            dbSet.Remove(item);
         }
-    }
-
-    public void Delete(T entity)
-    {
-        if (_context.Entry(entity).State == EntityState.Detached)
-        {
-            dbSet.Attach(entity);
-        }
-
-        dbSet.Remove(entity);
     }
 
     public async Task Update(int id, T entity)
     {
-        dbSet.Attach(entity);
-        _context.Entry(entity).State = EntityState.Modified;
+        var item = await dbSet.FindAsync(id);
+        
+        if (item is not null)
+        {
+            _context.Entry(item).CurrentValues.SetValues(entity);
+        }
     }
 }

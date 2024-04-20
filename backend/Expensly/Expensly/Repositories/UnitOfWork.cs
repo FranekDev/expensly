@@ -3,25 +3,12 @@ using Expensly.Library.Models;
 
 namespace Expensly.Repositories;
 
-public class UnitOfWork(ExpenslyContext context) : IDisposable
+public class UnitOfWork(ExpenslyContext context) : IUnitOfWork, IDisposable
 {
     private ExpenslyContext _context = context;
-    private GenericRepository<User> _userRepository;
+    public GenericRepository<User> UserRepository { get; } = new(context);
 
-    public GenericRepository<User> UserRepository
-    {
-        get
-        {
-            if (_userRepository == null)
-            {
-                _userRepository = new GenericRepository<User>(_context);
-            }
-
-            return _userRepository;
-        }
-    }
-
-    public async Task Save()
+    public async Task SaveAsync()
     {
         await _context.SaveChangesAsync();
     }
