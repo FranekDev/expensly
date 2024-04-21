@@ -24,5 +24,6 @@ public class ExpenslyContext : DbContext
             .IsUnique();
     }
 
-    public DbSet<User> Users { get; set; }
+    public DbSet<User> Users { get; init; }
+    public DbSet<Category> Categories { get; init; }
 }

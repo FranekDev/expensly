@@ -28,9 +28,7 @@ public sealed class User
     [StringLength(128)]
     public string Password { get; set; }
     
-    [Column("created_at")]
     public DateTime CreatedAt { get; set; } = DateTime.Now;
     
-    [Column("updated_at")]
     public DateTime UpdatedAt { get; set; } = DateTime.Now;
 }

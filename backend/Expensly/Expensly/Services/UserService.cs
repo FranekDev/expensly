@@ -1,5 +1,6 @@
 ﻿using Expensly.Library.DTOs;
 using Expensly.Library.Helpers.Static;
+using Expensly.Library.Models;
 using Expensly.Repositories;
 
 namespace Expensly.Services;
@@ -21,10 +22,9 @@ public class UserService(IUnitOfWork unitOfWork) : IUserService
         return user?.MapToDto();
     }
 
-    public async Task<UserDto> Create(UserDto user)
+    public async Task<UserDto> Create(User user)
     {
-        var newUser = user.MapToDomain();
-        var createdUser = await _unitOfWork.UserRepository.Create(newUser);
+        var createdUser = await _unitOfWork.UserRepository.Create(user);
         await _unitOfWork.SaveAsync();
         return createdUser.MapToDto();
     }

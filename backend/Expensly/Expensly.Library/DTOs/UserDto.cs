@@ -1,6 +1,8 @@
-﻿namespace Expensly.Library.DTOs;
+﻿using Expensly.Library.Models;
 
-public class UserDto
+namespace Expensly.Library.DTOs;
+
+public record UserDto
 {
     public int Id { get; init; }
     
