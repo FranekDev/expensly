@@ -1,5 +1,4 @@
 ﻿using Expensly.Data;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace Expensly.Repositories;
@@ -8,6 +7,8 @@ public class GenericRepository<T>(ExpenslyContext context) : IGenericRepository<
 {
     protected DbSet<T> dbSet = context.Set<T>();
     private ExpenslyContext _context => context;
+    
+    public DbSet<T> DbSet => dbSet;
 
     public async Task<T> Create(T entity)
     {
@@ -46,4 +47,5 @@ public class GenericRepository<T>(ExpenslyContext context) : IGenericRepository<
             _context.Entry(item).CurrentValues.SetValues(entity);
         }
     }
+    
 }

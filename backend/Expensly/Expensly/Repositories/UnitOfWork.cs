@@ -7,6 +7,7 @@ public class UnitOfWork(ExpenslyContext context) : IUnitOfWork, IDisposable
 {
     private ExpenslyContext _context = context;
     public GenericRepository<User> UserRepository { get; } = new(context);
+    public GenericRepository<Category> CategoryRepository { get; } = new(context);
 
     public async Task SaveAsync()
     {
