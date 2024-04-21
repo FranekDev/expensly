@@ -1,7 +1,5 @@
 ﻿using Expensly.Library.DTOs;
-using Expensly.Library.Helpers.Static;
 using Expensly.Library.Models;
-using Expensly.Repositories;
 using Expensly.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -38,10 +36,10 @@ public class UserController(IUserService userService) : ControllerBase
     [HttpPost]
     [ProducesResponseType(typeof(User), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(User), StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<int>> Create([FromBody] UserDto user)
+    public async Task<ActionResult<int>> Create([FromBody] User user)
     {
         var createdUser = await _userService.Create(user);
-        return CreatedAtAction(nameof(GetById), new { id = createdUser.Id }, createdUser);
+        return CreatedAtAction(nameof(Create), new { id = createdUser.Id }, createdUser);
     }
 
     [HttpPut("{id:int}")]
