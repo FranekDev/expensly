@@ -21,7 +21,7 @@ public class CategoryService(IUnitOfWork unitOfWork) : ICategoryService
     {
         var category =  await _unitOfWork.CategoryRepository.DbSet
             .Include(x => x.User)
-            .FirstOrDefaultAsync(u => u.Id == id);
+            .SingleOrDefaultAsync(u => u.Id == id);
         return category?.MapToDto();
     }
 
